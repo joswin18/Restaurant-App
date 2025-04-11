@@ -21,7 +21,7 @@ const CustomButton = ({
         display:'block',
         border:'2px solid transparent',
         '&:hover':{
-            backgroundColor: color,
+            backgroundColor: 'rgb(0,0,0,0.1)' || color ,
             color: backgroundColor,
             borderColor:backgroundColor,
         },

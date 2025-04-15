@@ -31,6 +31,47 @@ function Header() {
 
         setMobileMenu({...mobileMenu,[anchor]:open})
     }
+
+    const list = (anchor) =>{
+        return (
+        <Box sx={{
+            width:anchor === "top" || anchor === "bottom" ? 'auto' : 250
+        }}
+        role="presentation"
+        onClick={toggleDrawer(anchor,false)}
+        onKeyDown = {toggleDrawer(anchor,false)}
+        >
+            
+            <List>
+                 {
+                    nav_titles.map((item,index)=>(
+                        <ListItem key={item.index} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                {
+                                    index === 0 && <HomeIcon/>
+                                }
+                                {
+                                    index === 1 && <FeaturedPlayListIcon/>
+                                }
+                                {
+                                    index === 2 && <MiscellaneousServicesIcon/>
+                                }
+                                {
+                                    index === 3 && <ContactsIcon/>
+                                }
+                                
+                            </ListItemIcon>
+                            <ListItemText primary={item.display} />
+                        </ListItemButton>
+                    </ListItem>
+                    ))
+                 }
+                    
+            </List>
+        </Box>
+        )
+    }
     const nav_titles = [
         { path: '/', display: 'Home' },
         { path: '/', display: 'Dishes' },
@@ -93,6 +134,9 @@ function Header() {
                     open={mobileMenu["left"]}
                     onClose={toggleDrawer("left",false)}
                     >
+                    {
+                        list('left')
+                    }
                     </Drawer>
                     <NavBarLogo src={logoImg} alt="SpiceKart" />
                 </Box>
